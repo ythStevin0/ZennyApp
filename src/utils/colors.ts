@@ -1,0 +1,66 @@
+export const Colors = {
+  primary: '#E879F9',
+  primaryDark: '#D946EF',
+  primaryDeep: '#8B5CF6',
+  primaryDeeper: '#7C3AED',
+  white: '#FFFFFF',
+  black: '#000000',
+
+  // Light mode
+  bg: '#F9FAFB',
+  surface: '#FFFFFF',
+  border: '#F3F4F6',
+  borderMid: '#E5E7EB',
+  text: '#111827',
+  textSecondary: '#6B7280',
+  textMuted: '#9CA3AF',
+
+  // Income / Expense
+  income: '#16A34A',
+  incomeBg: '#F0FDF4',
+  incomeBorder: '#DCFCE7',
+  expense: '#DC2626',
+  expenseBg: '#FEF2F2',
+  expenseBorder: '#FEE2E2',
+
+  gray50: '#F9FAFB',
+  gray100: '#F3F4F6',
+  gray200: '#E5E7EB',
+  gray300: '#D1D5DB',
+  gray400: '#9CA3AF',
+  gray500: '#6B7280',
+  gray600: '#4B5563',
+  gray700: '#374151',
+  gray800: '#1F2937',
+  gray900: '#111827',
+
+  purple50: '#FAF5FF',
+  purple100: '#F3E8FF',
+  purple200: '#E9D5FF',
+  purple300: '#D8B4FE',
+  purple400: '#C084FC',
+  purple500: '#A855F7',
+  purple600: '#9333EA',
+  purple700: '#7E22CE',
+
+  green100: '#DCFCE7',
+  green400: '#4ADE80',
+  green500: '#22C55E',
+  green600: '#16A34A',
+
+  red100: '#FEE2E2',
+  red400: '#F87171',
+  red500: '#EF4444',
+  red600: '#DC2626',
+
+  orange400: '#FB923C',
+  orange500: '#F97316',
+
+  blue500: '#3B82F6',
+  cyan500: '#06B6D4',
+  pink500: '#EC4899',
+  indigo500: '#6366F1',
+  teal500: '#14B8A6',
+  emerald500: '#10B981',
+  yellow300: '#FDE047',
+};
