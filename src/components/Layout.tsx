@@ -53,13 +53,13 @@ export function Layout({ children, activeTab, onTabChange }: LayoutProps) {
               <NavItem
                 icon="home"
                 label="Home"
-                active={activeTab === 'home'}
+                isActive={activeTab === 'home'}
                 onPress={() => onTabChange('home')}
               />
               <NavItem
                 icon="grid"
                 label="SmartView"
-                active={activeTab === 'smartview'}
+                isActive={activeTab === 'smartview'}
                 onPress={() => onTabChange('smartview')}
               />
             </View>
@@ -71,13 +71,13 @@ export function Layout({ children, activeTab, onTabChange }: LayoutProps) {
               <NavItem
                 icon="trophy"
                 label="Goals"
-                active={activeTab === 'goals'}
+                isActive={activeTab === 'goals'}
                 onPress={() => onTabChange('goals')}
               />
               <NavItem
                 icon="notifications"
                 label="Reminder"
-                active={activeTab === 'reminder'}
+                isActive={activeTab === 'reminder'}
                 onPress={() => onTabChange('reminder')}
               />
             </View>
@@ -89,20 +89,20 @@ export function Layout({ children, activeTab, onTabChange }: LayoutProps) {
 }
 
 function NavItem({
-  icon, label, active, onPress,
+  icon, label, isActive, onPress,
 }: {
-  icon: string; label: string; active: boolean; onPress: () => void;
+  icon: string; label: string; isActive: boolean; onPress: () => void;
 }) {
   return (
     <TouchableOpacity style={styles.navItem} onPress={onPress}>
-      <View style={[styles.navIconWrap, active && styles.navIconWrapActive]}>
+      <View style={[styles.navIconWrap, isActive && styles.navIconWrapActive]}>
         <Ionicons
-          name={active ? (icon as any) : (`${icon}-outline` as any)}
+          name={isActive ? (icon as any) : (`${icon}-outline` as any)}
           size={24}
-          color={active ? Colors.primaryDeep : 'rgba(255,255,255,0.7)'}
+          color={isActive ? Colors.primaryDeep : 'rgba(255,255,255,0.7)'}
         />
       </View>
-      <Text style={[styles.navLabel, active ? styles.navLabelActive : styles.navLabelInactive]}>
+      <Text style={[styles.navLabel, isActive ? styles.navLabelActive : styles.navLabelInactive]}>
         {label}
       </Text>
     </TouchableOpacity>
@@ -172,18 +172,22 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   navIconWrap: {
-    padding: 8,
-    borderRadius: 20,
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
     marginBottom: 2,
+    alignSelf: 'center',
   },
   navIconWrapActive: {
     backgroundColor: Colors.white,
-    transform: [{ translateY: -8 }],
+    transform: [{ translateY: -14 }],
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 4,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+    elevation: 8,
   },
   navLabel: { fontSize: 10, fontWeight: '700', letterSpacing: 0.3 },
   navLabelActive: { color: Colors.white },
