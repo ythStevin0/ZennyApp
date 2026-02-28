@@ -13,7 +13,8 @@ import { Profile } from './src/components/Profile';
 import { useTransactions } from './src/hooks/useTransactions';
 import { useGoals } from './src/hooks/useGoals';
 import { useReminders } from './src/hooks/useReminders';
-import { ActiveTab } from './src/types';
+import { useUser } from './src/hooks/useUser';
+import { ActiveTab, UserProfile } from './src/types';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('home');
@@ -22,6 +23,7 @@ export default function App() {
   const { transactions, addTransaction, getBalance, getIncome, getExpense } = useTransactions();
   const { goals, addGoal, deleteGoal, addSavings } = useGoals();
   const { reminders, addReminder, deleteReminder, markPaid } = useReminders();
+  const { user, saveUser } = useUser();
 
   const handleTabChange = (tab: 'home' | 'smartview' | 'add' | 'goals' | 'reminder') => {
     if (tab === 'add') {
@@ -46,6 +48,7 @@ export default function App() {
               income={getIncome()}
               expense={getExpense()}
               onProfileClick={() => setActiveTab('profile')}
+              user={user}
             />
           )}
 
@@ -94,6 +97,12 @@ export default function App() {
             <Profile
               isDarkMode={isDarkMode}
               onToggleDarkMode={() => setIsDarkMode(!isDarkMode)}
+              user={user}
+              onSaveProfile={saveUser}
+              onEditProfileClick={() => {}} // Internal state handles this now
+              balance={getBalance()}
+              income={getIncome()}
+              expense={getExpense()}
             />
           )}
 

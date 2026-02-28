@@ -6,11 +6,12 @@ import {
   TouchableOpacity,
   StyleSheet,
   Animated,
+  Image,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { isToday, isYesterday, format } from 'date-fns';
 import { id } from 'date-fns/locale';
-import { Transaction } from '../types';
+import { Transaction, UserProfile } from '../types';
 import { getCategoryIcon, formatRupiah } from '../utils';
 import { Colors } from '../utils/colors';
 
@@ -20,9 +21,10 @@ interface DashboardProps {
   income: number;
   expense: number;
   onProfileClick: () => void;
+  user: UserProfile;
 }
 
-export function Dashboard({ transactions, balance, income, expense, onProfileClick }: DashboardProps) {
+export function Dashboard({ transactions, balance, income, expense, onProfileClick, user }: DashboardProps) {
   const [showBalance, setShowBalance] = useState(true);
 
   const grouped: Record<string, Transaction[]> = {};
@@ -49,11 +51,15 @@ export function Dashboard({ transactions, balance, income, expense, onProfileCli
         <View style={styles.headerContent}>
           <TouchableOpacity style={styles.profileBtn} onPress={onProfileClick}>
             <View style={styles.avatar}>
-              <Ionicons name="person" size={24} color={Colors.primaryDeep} />
+              {user.photoUri ? (
+                <Image source={{ uri: user.photoUri }} style={styles.avatarImage} />
+              ) : (
+                <Ionicons name="person" size={24} color={Colors.primaryDeep} />
+              )}
             </View>
             <View>
               <Text style={styles.welcomeText}>Welcome back 👋</Text>
-              <Text style={styles.nameText}>Ahmad Nazar</Text>
+              <Text style={styles.nameText}>{user.name}</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity style={styles.bellBtn}>
@@ -207,6 +213,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 2,
     borderColor: Colors.white,
+    overflow: 'hidden',
+  },
+  avatarImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
   },
   welcomeText: { fontSize: 11, color: Colors.gray500, fontWeight: '500' },
   nameText: { fontSize: 17, fontWeight: '700', color: Colors.text },

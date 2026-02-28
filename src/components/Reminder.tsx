@@ -88,7 +88,7 @@ export function Reminder({ reminders, onAddClick, onMarkPaid, onDelete }: Remind
             <Text style={[styles.sumValue, { fontSize: 18 }]}>{formatRupiah(totalAmount)}</Text>
             <Text style={styles.sumSub}>{reminders.filter(r => !r.paid).length} Tagihan</Text>
             <View style={styles.sumBar}>
-              <View style={[styles.sumBarFill, { width: '50%' }]} />
+              <View style={[styles.sumBarFill, { width: totalAmount > 0 ? '50%' : '0%' }]} />
             </View>
           </View>
         </View>
