@@ -9,6 +9,13 @@ export interface Transaction {
   note?: string;
 }
 
+export interface UserProfile {
+  name: string;
+  email: string;
+  phone: string;
+  photoUri?: string;
+}
+
 export const CATEGORIES = {
   income: ['Gaji', 'Hadiah', 'Investasi', 'Lainnya'],
   expense: [
@@ -27,4 +34,5 @@ export type ActiveTab =
   | 'reminder'
   | 'add-reminder'
   | 'profile'
-  | 'add-goal';
+  | 'add-goal'
+  | 'edit-profile';
